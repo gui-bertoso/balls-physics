@@ -19,7 +19,7 @@ class App:
         ]
 
         self.update_delay = 0.1
-        self.particles_amount = 100
+        self.particles_amount = 20
 
         self.particles = []
         self.grid_points = []
@@ -108,15 +108,18 @@ class App:
 
                 dx, dy = cx - px, cy - py
 
-                particle.x += dx * 0.02 * values[i]
-                particle.y += dy * 0.02 * values[i]
+                dist_sq = dx * dx + dy * dy + 0.0001
+                force = values[i] / dist_sq
+
+                particle.x += dx * force * 100
+                particle.y += dy * force * 100
 
 
     def print_log(self, delta_time):
         print(f"\r[deltaTime: {delta_time}] - [instancesCount: {self.get_instances_count()}] - [fps: {self.get_fps()}]", end="", flush=True)
 
     def get_instances_count(self):
-        return len(self.particles)
+        return len(self.particles) + len(self.grid_points)*2
 
     def get_fps(self):
         return self.fps_label.label.text
