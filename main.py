@@ -115,7 +115,6 @@ class App:
                     p2.y += ny * push
 
     def apply_interference_radius(self, dt):
-        # local attraction only: cells affect nearby particles
         for _, circle, value in self.active_points:
             cx, cy = circle.x, circle.y
             radius = circle.radius
