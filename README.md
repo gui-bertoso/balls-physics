@@ -6,6 +6,7 @@ A Python/Pygame physics experiment for interactive ball simulation.
 
 ```sh
 python -m pip install pygame
+python -m pip install pyglet
 python main.py
 ```
 
